@@ -36,8 +36,36 @@ public class MusicCommands {
 		commands.add(new Play());
 		commands.add(new Stop());
 		commands.add(new Skip());
+		commands.add(new Leave());
 
 		return commands;
+
+	}
+
+	/**
+	 * Extra method used to check some conditions before executing a command.
+	 * 
+	 * @param event The command interaction event
+	 * @return True if User and Bot are connected to the same voice channel. False
+	 *         if one of them is not connected to a voice channel or it's on another
+	 *         one.
+	 */
+	public static boolean sameVoiceChannelCheck(SlashCommandInteractionEvent event) {
+
+		Member member = event.getMember();
+		GuildVoiceState memberVoiceState = member.getVoiceState();
+
+		Member botMember = event.getGuild().getSelfMember();
+		GuildVoiceState botVoiceState = botMember.getVoiceState();
+
+		if (!memberVoiceState.inAudioChannel() || !botVoiceState.inAudioChannel()
+				|| memberVoiceState.getChannel() != botVoiceState.getChannel()) {
+
+			return false;
+
+		}
+
+		return true;
 
 	}
 
@@ -135,18 +163,9 @@ class Stop implements Command {
 	@Override
 	public void execute(SlashCommandInteractionEvent event) {
 
-		Member member = event.getMember();
-		GuildVoiceState memberVoiceState = member.getVoiceState();
-
-		Member botMember = event.getGuild().getSelfMember();
-		GuildVoiceState botVoiceState = botMember.getVoiceState();
-
-		if (!memberVoiceState.inAudioChannel() || !botVoiceState.inAudioChannel()
-				|| memberVoiceState.getChannel() != botVoiceState.getChannel()) {
-
+		if (!MusicCommands.sameVoiceChannelCheck(event)) {
 			event.reply("I won't tell you why it doesn't work >:(").queue();
 			return;
-
 		}
 
 		AudioPlayList audioPlayList = MusicManager.getMusicManager(event.getGuild()).getAudioPlayList();
@@ -187,23 +206,59 @@ class Skip implements Command {
 	@Override
 	public void execute(SlashCommandInteractionEvent event) {
 
-		Member member = event.getMember();
-		GuildVoiceState memberVoiceState = member.getVoiceState();
-
-		Member botMember = event.getGuild().getSelfMember();
-		GuildVoiceState botVoiceState = botMember.getVoiceState();
-
-		if (!memberVoiceState.inAudioChannel() || !botVoiceState.inAudioChannel()
-				|| memberVoiceState.getChannel() != botVoiceState.getChannel()) {
-
+		if (!MusicCommands.sameVoiceChannelCheck(event)) {
 			event.reply("I won't tell you why it doesn't work >:(").queue();
 			return;
-
 		}
 
 		MusicManager musicManager = MusicManager.getMusicManager(event.getGuild());
 		musicManager.getAudioPlayList().getAudioPlayer().stopTrack();
 		event.reply("Song skipped").queue();
+
+	}
+
+}
+
+/**
+ * Leave song command.<br>
+ * /leave <br>
+ * Leaves the voice channel and clears the playlist queue.
+ * 
+ * @author Falseme (Fabricio Tomás)
+ * 
+ * @see AudioPlaylist
+ */
+class Leave implements Command {
+
+	@Override
+	public String getName() {
+		return "leave";
+	}
+
+	@Override
+	public String getDescription() {
+		return "leave the voice channel";
+	}
+
+	@Override
+	public List<OptionData> getParams() {
+		return null;
+	}
+
+	@Override
+	public void execute(SlashCommandInteractionEvent event) {
+
+		if (!MusicCommands.sameVoiceChannelCheck(event)) {
+			event.reply("I won't tell you why it doesn't work >:(").queue();
+			return;
+		}
+
+		AudioPlayList audioPlayList = MusicManager.getMusicManager(event.getGuild()).getAudioPlayList();
+		audioPlayList.getQueue().clear();
+		audioPlayList.getAudioPlayer().stopTrack();
+
+		event.getGuild().getAudioManager().closeAudioConnection();
+		event.reply("Left voice channel & cleared song playlist").queue();
 
 	}
 
