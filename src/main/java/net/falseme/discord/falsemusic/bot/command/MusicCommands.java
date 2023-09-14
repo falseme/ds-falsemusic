@@ -35,6 +35,7 @@ public class MusicCommands {
 
 		commands.add(new Play());
 		commands.add(new Stop());
+		commands.add(new Skip());
 
 		return commands;
 
@@ -143,7 +144,7 @@ class Stop implements Command {
 		if (!memberVoiceState.inAudioChannel() || !botVoiceState.inAudioChannel()
 				|| memberVoiceState.getChannel() != botVoiceState.getChannel()) {
 
-			event.reply("I won't tell you why it doesn't work").queue();
+			event.reply("I won't tell you why it doesn't work >:(").queue();
 			return;
 
 		}
@@ -152,6 +153,57 @@ class Stop implements Command {
 		audioPlayList.getQueue().clear();
 		audioPlayList.getAudioPlayer().stopTrack();
 		event.reply("Stop").queue();
+
+	}
+
+}
+
+/**
+ * Skip song command.<br>
+ * /skip <br>
+ * Skips the current song and let the next one play.
+ * 
+ * @author Falseme (Fabricio Tomás)
+ * 
+ * @see AudioPlaylist
+ */
+class Skip implements Command {
+
+	@Override
+	public String getName() {
+		return "skip";
+	}
+
+	@Override
+	public String getDescription() {
+		return "Skips the current song and plays the next one";
+	}
+
+	@Override
+	public List<OptionData> getParams() {
+		return null;
+	}
+
+	@Override
+	public void execute(SlashCommandInteractionEvent event) {
+
+		Member member = event.getMember();
+		GuildVoiceState memberVoiceState = member.getVoiceState();
+
+		Member botMember = event.getGuild().getSelfMember();
+		GuildVoiceState botVoiceState = botMember.getVoiceState();
+
+		if (!memberVoiceState.inAudioChannel() || !botVoiceState.inAudioChannel()
+				|| memberVoiceState.getChannel() != botVoiceState.getChannel()) {
+
+			event.reply("I won't tell you why it doesn't work >:(").queue();
+			return;
+
+		}
+
+		MusicManager musicManager = MusicManager.getMusicManager(event.getGuild());
+		musicManager.getAudioPlayList().getAudioPlayer().stopTrack();
+		event.reply("Song skipped").queue();
 
 	}
 

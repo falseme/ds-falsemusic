@@ -37,6 +37,7 @@ public class MusicManager {
 		AudioPlayer audioPlayer = audioPlayerManager.createPlayer();
 
 		audioPlayList = new AudioPlayList(audioPlayer);
+		audioPlayer.addListener(audioPlayList);
 		audioHandler = new AudioHandler(audioPlayer);
 
 	}

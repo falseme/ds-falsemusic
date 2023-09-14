@@ -5,16 +5,18 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
+import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
 
 /**
  * Store songs in a LinkedQueue so as to play them using an AudioPlayer
  * 
  * @author Falseme (Fabricio Tomás)
  */
-public class AudioPlayList implements AudioLoadResultHandler {
+public class AudioPlayList extends AudioEventAdapter implements AudioLoadResultHandler {
 
 	private final AudioPlayer audioPlayer;
 	private final BlockingQueue<AudioTrack> queue = new LinkedBlockingQueue<>();
@@ -50,6 +52,15 @@ public class AudioPlayList implements AudioLoadResultHandler {
 
 	public BlockingQueue<AudioTrack> getQueue() {
 		return queue;
+	}
+
+	/**
+	 * When a song ends, it reproduces the next one in the queue. Used when a song
+	 * ends by itself or a user skiped it.
+	 */
+	@Override
+	public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
+		player.startTrack(queue.poll(), false);
 	}
 
 	/**
