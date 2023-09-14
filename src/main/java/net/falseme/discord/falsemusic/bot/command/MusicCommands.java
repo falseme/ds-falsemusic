@@ -1,11 +1,13 @@
 package net.falseme.discord.falsemusic.bot.command;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -126,9 +128,27 @@ class Play implements Command {
 
 		}
 
+		event.deferReply().queue();
+
 		String url = event.getOption("url").getAsString();
 		MusicManager.play(event.getGuild(), url);
-		event.reply("play: " + url).queue();
+
+		EmbedBuilder eb = new EmbedBuilder();
+		eb.setColor(new Color(0xfe6906));
+
+		boolean isplaylistempty = MusicManager.getMusicManager(event.getGuild()).getAudioPlayList().getQueue()
+				.isEmpty();
+		boolean songplaying = MusicManager.getMusicManager(event.getGuild()).getAudioPlayList().getAudioPlayer()
+				.getPlayingTrack() != null;
+		if (!isplaylistempty || songplaying)
+			eb.addField("Song added to current playlist!", "`url: " + url + "`", false);
+		else
+			eb.addField("Playing song!", "`url: " + url + "`", false);
+
+		int index = url.indexOf("?v=") + 3;
+		eb.setThumbnail("https://i.ytimg.com/vi/" + url.substring(index) + "/default.jpg");
+
+		event.getHook().sendMessageEmbeds(eb.build()).queue();
 
 	}
 
@@ -171,7 +191,12 @@ class Stop implements Command {
 		AudioPlayList audioPlayList = MusicManager.getMusicManager(event.getGuild()).getAudioPlayList();
 		audioPlayList.getQueue().clear();
 		audioPlayList.getAudioPlayer().stopTrack();
-		event.reply("Stop").queue();
+
+		EmbedBuilder eb = new EmbedBuilder();
+		eb.setColor(new Color(0xfe6906));
+		eb.addField("Stopped music!", "The whole playlist was ereased", false);
+
+		event.reply("").addEmbeds(eb.build()).queue();
 
 	}
 
@@ -212,8 +237,17 @@ class Skip implements Command {
 		}
 
 		MusicManager musicManager = MusicManager.getMusicManager(event.getGuild());
+		boolean playlistempty = musicManager.getAudioPlayList().getQueue().isEmpty();
 		musicManager.getAudioPlayList().getAudioPlayer().stopTrack();
-		event.reply("Song skipped").queue();
+
+		EmbedBuilder eb = new EmbedBuilder();
+		eb.setColor(new Color(0xfe6906));
+		if (playlistempty)
+			eb.addField("Song Skipped!", "The playlist is empty. Use `/play` to add a new song", false);
+		else
+			eb.addField("Song Skipped!", "Playing the next one...", false);
+
+		event.reply("").addEmbeds(eb.build()).queue();
 
 	}
 
@@ -258,7 +292,12 @@ class Leave implements Command {
 		audioPlayList.getAudioPlayer().stopTrack();
 
 		event.getGuild().getAudioManager().closeAudioConnection();
-		event.reply("Left voice channel & cleared song playlist").queue();
+
+		EmbedBuilder eb = new EmbedBuilder();
+		eb.setColor(new Color(0xfe6906));
+		eb.addField("Left voice channel!", "", false);
+
+		event.reply("").addEmbeds(eb.build()).queue();
 
 	}
 
