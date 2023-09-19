@@ -14,6 +14,8 @@
 	<properties>
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<project.youtube.version>v3-rev222-1.25.0</project.youtube.version>
 	</properties>
 
 	<repositories>
@@ -21,6 +23,10 @@
 			<id>dv8tion</id>
 			<name>m2-dv8tion</name>
 			<url>https://m2.dv8tion.net/releases</url>
+		</repository>
+		<repository>
+			<id>google-api-services</id>
+			<url>http://google-api-client-libraries.appspot.com/mavenrepo</url>
 		</repository>
 	</repositories>
 
@@ -54,6 +60,20 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.16.1</version>
+		</dependency>
+		
+		<!-- YouTube Data V3 support -->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-youtube</artifactId>
+			<version>${project.youtube.version}</version>
+		</dependency>
+
 
 	</dependencies>
 
@@ -85,7 +105,7 @@
 									<manifestEntries>
 										<Main-Class>
 											net.falseme.discord.falsemusic.bot.Main</Main-Class>
-										<Build-Number>2</Build-Number>
+										<Build-Number>1</Build-Number>
 									</manifestEntries>
 								</transformer>
 							</transformers>
