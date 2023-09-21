@@ -128,12 +128,12 @@ public class MusicCommands {
 					.getPlayingTrack() != null;
 
 			String fieldTitle = (!isplaylistempty || songplaying) ? "Song added to current playlist!" : "Playing song!";
-			String fieldDesc = (songName == null) ? String.format("`url: %s`", url)
-					: String.format("%s: %s", author, songName);
+			String fieldDesc = (songName == null) ? String.format("||%s||", url)
+					: String.format("**[** %s **]**", songName);
 
 			eb.addField(fieldTitle, fieldDesc, false); // title & songName/url
 			if (author != null)
-				eb.addField(author, url, false); // author & url
+				eb.addField(author, String.format("||%s||", url), false); // author & url
 
 			// CHECK NULL THUMBNAIL URL
 			int index = url.indexOf("?v=") + 3;
