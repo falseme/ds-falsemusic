@@ -12,6 +12,12 @@ import com.google.api.services.youtube.model.SearchListResponse;
 import net.dv8tion.jda.api.entities.Guild;
 import net.falseme.discord.falsemusic.env.Env;
 
+/**
+ * Manage the youtube requests executing queries by the Youtube Data API and
+ * storing the responses inside a hashmap.
+ * 
+ * @author Falseme (Fabricio Tomás)
+ */
 public class YoutubeRequest {
 
 	private static YouTube youtubeClient;
@@ -30,6 +36,8 @@ public class YoutubeRequest {
 	 * @param query The user query
 	 * @param guild The discord guild/server the bot was called from
 	 * @throws IOException if there was a problem connecting or getting a response
+	 * @return A YoutubeResponse with all the song data. Also stores it inside a
+	 *         hashmap.
 	 */
 	public static YoutubeResponse executeQuery(String query, Guild guild) throws IOException {
 

@@ -58,6 +58,7 @@ public class MusicManager {
 	 * AudioHandler.
 	 * 
 	 * @param guild The discord guild the music manager will be used for.
+	 * @return The Music Manager for the needed Discord Guild/Server.
 	 */
 	public static MusicManager getMusicManager(Guild guild) {
 
