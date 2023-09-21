@@ -12,10 +12,22 @@ import com.google.api.services.youtube.model.SearchResult;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 
+/**
+ * A YoutubeResponse Object is used to store all the usefull data of a response
+ * inside a hashmap, using much less RAM.
+ * 
+ * @author Falseme (Fabricio Tomás)
+ */
 public class YoutubeResponse {
 
 	Map<Integer, Map<String, String>> resultData = new HashMap<>();
 
+	/**
+	 * Generate an object that store all the usefull data inside a list of
+	 * SearchResults. Such as url, author, song name, imgs...
+	 * 
+	 * @param result A list of Youtube SearchResult
+	 */
 	public YoutubeResponse(List<SearchResult> result) {
 
 		Iterator<SearchResult> iterator = result.iterator();
@@ -38,6 +50,11 @@ public class YoutubeResponse {
 
 	}
 
+	/**
+	 * Generates an embed message for each SearchResult stored.
+	 * 
+	 * @return A list of Embed Messages.
+	 */
 	public List<MessageEmbed> getEmbedMessages() {
 
 		List<MessageEmbed> embeds = new LinkedList<>();
@@ -49,6 +66,12 @@ public class YoutubeResponse {
 
 	}
 
+	/**
+	 * Generates an embed message for a specific SearchResult using the given index.
+	 * 
+	 * @param index The song requested inside the sorted hashmap.
+	 * @return The Embed Message.
+	 */
 	public MessageEmbed getEmbed(int index) {
 
 		if (!resultData.containsKey(index))
@@ -58,6 +81,12 @@ public class YoutubeResponse {
 
 	}
 
+	/**
+	 * Get the url of song.
+	 * 
+	 * @param index The song index inside the sorted hashmap.
+	 * @return A String with the url.
+	 */
 	public String getUrl(int index) {
 
 		if (!resultData.containsKey(index))
@@ -67,6 +96,12 @@ public class YoutubeResponse {
 
 	}
 
+	/**
+	 * Get the name of a song.
+	 * 
+	 * @param index The song index inside the sorted hashmap.
+	 * @return A String with the song/video name.
+	 */
 	public String getSongName(int index) {
 
 		if (!resultData.containsKey(index))
@@ -76,6 +111,12 @@ public class YoutubeResponse {
 
 	}
 
+	/**
+	 * Get the author of a song.
+	 * 
+	 * @param index The song index inside the sorted hashmap.
+	 * @return A String with author/channel name.
+	 */
 	public String getAuthor(int index) {
 
 		if (!resultData.containsKey(index))
@@ -85,6 +126,12 @@ public class YoutubeResponse {
 
 	}
 
+	/**
+	 * Get the thumbnail of a song/video.
+	 * 
+	 * @param index The song index inside the sorted hashmap.
+	 * @return A String with thumbnail url.
+	 */
 	public String getThumbnail(int index) {
 
 		if (!resultData.containsKey(index))
@@ -94,6 +141,13 @@ public class YoutubeResponse {
 
 	}
 
+	/**
+	 * Builds an embed message that informs about a song. Giving the name, author,
+	 * url...
+	 * 
+	 * @param index The song index inside the sorted hashmap.
+	 * @return The Embed Message.
+	 */
 	private MessageEmbed buildEmbed(int index) {
 
 		EmbedBuilder eb = new EmbedBuilder();

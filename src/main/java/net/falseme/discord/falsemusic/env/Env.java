@@ -12,6 +12,12 @@ public class Env {
 
 	private static Map<String, String> keys = new HashMap<>();
 
+	/**
+	 * Load api keys
+	 * 
+	 * @return True if could load
+	 * @throws Exception if couldn't load
+	 */
 	public static boolean load() throws Exception {
 
 		System.out.println("LOADING ENV VARIABLES...");
