@@ -33,6 +33,13 @@ public class UserCommands {
 
 	}
 
+	/**
+	 * Help user command.<br>
+	 * /help <br>
+	 * Shows the command list and other usefull information
+	 * 
+	 * @author Falseme (Fabricio Tomás)
+	 */
 	public static class Help implements Command {
 
 		@Override
