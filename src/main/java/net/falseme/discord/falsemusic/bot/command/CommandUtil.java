@@ -1,7 +1,5 @@
 package net.falseme.discord.falsemusic.bot.command;
 
-import java.util.List;
-
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -11,11 +9,7 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
  * 
  * @author Falseme (Fabricio Tomás)
  */
-public class CommandList {
-
-	public static List<Command> loadCommands() {
-		return null;
-	}
+public class CommandUtil {
 
 	/**
 	 * Used to check if the bot is able to execute some commands.

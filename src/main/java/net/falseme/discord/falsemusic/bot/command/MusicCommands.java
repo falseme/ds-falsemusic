@@ -76,7 +76,7 @@ public class MusicCommands {
 		@Override
 		public void execute(SlashCommandInteractionEvent event) {
 
-			if (!CommandList.ableToPlayCheck(event))
+			if (!CommandUtil.ableToPlayCheck(event))
 				return;
 
 			event.deferReply().queue();
@@ -176,7 +176,7 @@ public class MusicCommands {
 		@Override
 		public void execute(SlashCommandInteractionEvent event) {
 
-			if (!CommandList.sameVoiceChannelCheck(event))
+			if (!CommandUtil.sameVoiceChannelCheck(event))
 				return;
 
 			AudioPlayList audioPlayList = MusicManager.getMusicManager(event.getGuild()).getAudioPlayList();
@@ -222,7 +222,7 @@ public class MusicCommands {
 		@Override
 		public void execute(SlashCommandInteractionEvent event) {
 
-			if (!CommandList.sameVoiceChannelCheck(event))
+			if (!CommandUtil.sameVoiceChannelCheck(event))
 				return;
 
 			MusicManager musicManager = MusicManager.getMusicManager(event.getGuild());
@@ -271,7 +271,7 @@ public class MusicCommands {
 		@Override
 		public void execute(SlashCommandInteractionEvent event) {
 
-			if (!CommandList.sameVoiceChannelCheck(event))
+			if (!CommandUtil.sameVoiceChannelCheck(event))
 				return;
 
 			AudioPlayList audioPlayList = MusicManager.getMusicManager(event.getGuild()).getAudioPlayList();

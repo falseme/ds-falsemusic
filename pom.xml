@@ -9,13 +9,14 @@
 	<version>1.0</version>
 
 	<name>ds-falsemusic</name>
-	<description>A music discord bot made with JDA</description>
+	<description>A music discord bot made with JDA, YouTube Data API and Spring</description>
 
 	<properties>
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
+
 		<project.youtube.version>v3-rev222-1.25.0</project.youtube.version>
+		<project.spring.version>3.1.4</project.spring.version>
 	</properties>
 
 	<repositories>
@@ -52,21 +53,6 @@
 			<version>2.0.9</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>2.0.9</version>
-			<scope>runtime</scope>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-		<dependency>
-			<groupId>org.jsoup</groupId>
-			<artifactId>jsoup</artifactId>
-			<version>1.16.1</version>
-		</dependency>
-		
 		<!-- YouTube Data V3 support -->
 		<dependency>
 			<groupId>com.google.apis</groupId>
@@ -74,11 +60,29 @@
 			<version>${project.youtube.version}</version>
 		</dependency>
 
+		<!-- SPRING -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${project.spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${project.spring.version}</version>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.spring.version}</version>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
