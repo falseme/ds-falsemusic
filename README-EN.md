@@ -20,7 +20,11 @@
 ------------
 
 ### Install
-To invite FalseMusic to your discord server all you need to do is click the blue button on top and then select the server you want it to join.
+To invite FalseMusic to your discord server all you need to do is click the button bellow and then select the server you want it to join.
+
+<a href="https://discord.com/api/oauth2/authorize?client_id=1130031187692376114&permissions=36702208&scope=bot">
+	<img src="https://img.shields.io/badge/falsemusic-add_to_discord_server-informational?style=for-the-badge&logo=discord&logoColor=fff" alt="FalseMusic Install">
+</a>
 
 ------------
 
@@ -41,5 +45,5 @@ You can also use `/help` to get extra information.
 This bot is currently hosting on railway.app which cost a small amount of money. If you can afford something I'd appreciate it a lot.
 
 <a href="https://ko-fi.com/falseme">
-	<img src="kofi_button_stroke.png" alt="FalseMusic Install" height=32px>
+	<img src="kofi_button_stroke.png" alt="falseme ko-fi" height=32px>
 </a>
