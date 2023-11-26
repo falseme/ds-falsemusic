@@ -41,8 +41,8 @@ También puedes usar `/help` para obtener información extra.
 
 ------------
 
-### Ayuda al mantenimiento
-Este bot está actualmente hosteado en railway.app lo cual cuesta una pequeña suma de dinero. Si puedes permitirte ayudar con una minima cantidad, lo apreciaría un montón.
+### ~Ayuda al mantenimiento~
+~Este bot está actualmente hosteado en railway.app lo cual cuesta una pequeña suma de dinero. Si puedes permitirte ayudar con una minima cantidad, lo apreciaría un montón.~
 
 <a href="https://ko-fi.com/falseme">
 	<img src="kofi_button_stroke.png" alt="falseme ko-fi" height=32px>
