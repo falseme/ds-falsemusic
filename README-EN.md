@@ -41,8 +41,8 @@ You can also use `/help` to get extra information.
 
 ------------
 
-### Support
-This bot is currently hosting on railway.app which cost a small amount of money. If you can afford something I'd appreciate it a lot.
+### ~Support~
+~This bot is currently hosting on railway.app which cost a small amount of money. If you can afford something I'd appreciate it a lot.~
 
 <a href="https://ko-fi.com/falseme">
 	<img src="kofi_button_stroke.png" alt="falseme ko-fi" height=32px>
