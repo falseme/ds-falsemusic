@@ -14,7 +14,7 @@
 	<img src="https://img.shields.io/github/release/falseme/ds-falsemusic?style=for-the-badge&label=version" alt="FalseMusic issues">
 </div>
 
-#### FalseMusic
+### FalseMusic
 *FalseMusic* is a spring boot application and a music discord bot that connects to the YouTube Data v3 API to search for youtube videos.
 
 ------------
@@ -22,7 +22,7 @@
 ### Install
 To invite FalseMusic to your discord server all you need to do is click the button bellow and then select the server you want it to join.
 
-<a href="https://discord.com/api/oauth2/authorize?client_id=1130031187692376114&permissions=36702208&scope=bot">
+<a href="https://discord.com/api/oauth2/authorize?client_id=1151665218137632788&permissions=8&scope=bot">
 	<img src="https://img.shields.io/badge/falsemusic-add_to_discord_server-informational?style=for-the-badge&logo=discord&logoColor=fff" alt="FalseMusic Install">
 </a>
 
