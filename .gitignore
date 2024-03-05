@@ -43,3 +43,7 @@ buildNumber.properties
 
 doc/
 javadoc.xml
+
+
+# Other
+*.exe

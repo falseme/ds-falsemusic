@@ -2,9 +2,6 @@ package net.falseme.discord.falsemusic.bot;
 
 import java.util.List;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -21,7 +18,6 @@ import net.falseme.discord.falsemusic.env.Env;
  * 
  * @author Falseme (Fabricio Tomás)
  */
-@SpringBootApplication
 public class Main {
 
 	/**
@@ -29,8 +25,6 @@ public class Main {
 	 * Builds the bot and loads settings, commands and listeners
 	 */
 	public static void main(String[] args) {
-
-		SpringApplication.run(Main.class, args);
 
 		try {
 			Env.load();
@@ -48,7 +42,7 @@ public class Main {
 		commandList.addAll(UserCommands.loadCommands());
 		commandList.addAll(YoutubeCommands.loadCommands());
 		for (Command c : commandList) {
-			System.out.println(c.getName());
+			System.out.println("Loaded Command: " + c.getName());
 		}
 		jdabot.addEventListener(new CommandListener(commandList));
 
