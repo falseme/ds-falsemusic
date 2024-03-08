@@ -57,10 +57,7 @@ public class MainViewController {
 		windowLabel.setGraphic(imageView);
 
 		botColor = "#F36F38";
-		System.out.println(colorPickerButton);
 		colorPickerButton.setStyle("-fx-background-color:" + botColor);
-//		colorPickerButton.setBackground(new Background(
-//				new BackgroundFill(Paint.valueOf(botColor), new CornerRadii(0), colorPickerButton.getInsets())));
 
 	}
 
