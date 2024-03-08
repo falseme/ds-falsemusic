@@ -1,0 +1,90 @@
+.windowBorder {
+	-fx-border-color: #1A1B1E;
+	-fx-border-width: 1px;
+	-fx-border-style: solid;
+	-fx-background-color: #313338;
+}
+
+.menuBar {
+	-fx-background-color: #313338;
+}
+
+.menuBarLabel {
+	-fx-font-size: 16;
+	-fx-font-weight: 800;
+}
+
+.menuBarButton {
+	-fx-background-radius: 0;
+	-fx-font-family: "Arial";
+	-fx-font-size: 20;
+	-fx-font-weight: 800;
+}
+.menuBarButton:hover {
+	-fx-background-color: #41434A;
+}
+.menuBarButton:pressed {
+	-fx-background-color: #1A1B1E;
+}
+
+.bodyText {
+	-fx-font-size: 14;
+	-fx-font-weight: bold;
+}
+
+.runButton {
+	-fx-background-color: #1A1B1E;
+}
+.runButton:hover {
+	-fx-background-color: #26272B;
+}
+.runButton:pressed {
+	-fx-background-color: #0D0E0F;
+}
+
+.community {
+	-fx-background-radius: 0;
+	-fx-background-color: #313338;
+	-fx-text-fill: #ffffff;
+}
+
+.community:hover {
+	-fx-text-fill: #0000EE;
+}
+
+.colorPickerButton {
+	-fx-background-radius: 0;
+	-fx-border-width: 0;
+}
+
+.colorPickerButton:hover {
+	-fx-border-color: #1A1B1E;
+	-fx-border-width: 2px;
+}
+
+.textField {
+	-fx-background-color: #1E1F22;
+	-fx-text-fill: #ffffff;
+}
+
+.textField:focused {
+	-fx-focus-color: #80848E;
+    -fx-faint-focus-color: #80848E22;
+
+    -fx-highlight-fill: -fx-accent;
+    -fx-highlight-text-fill: white;
+    -fx-control-inner-background: #1E1F22;
+    -fx-background-color:
+        -fx-focus-color,
+        -fx-control-inner-background,
+        -fx-faint-focus-color,
+        linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);
+    -fx-background-insets: -0.2, 1, -1.4, 3;
+    -fx-background-radius: 3, 2, 4, 0;
+}
+
+
+
+
+
+
