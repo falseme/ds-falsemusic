@@ -55,7 +55,7 @@
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                      <children>
                         <Label styleClass="bodyText" text="Discord Bot Token" textFill="WHITE" />
-                        <TextField promptText="Token">
+                        <TextField fx:id="botToken" promptText="Token">
                            <styleClass>
                               <String fx:value="bodyText" />
                               <String fx:value="textField" />
@@ -95,7 +95,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                      <children>
-                        <Button mnemonicParsing="false" text="Iniciar Bot" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#onRunButtonClicked" text="Iniciar Bot" textFill="WHITE">
                            <padding>
                               <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                            </padding>

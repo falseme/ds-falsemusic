@@ -8,7 +8,6 @@ import java.util.List;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
-import net.falseme.discord.falsemusic.bot.event.EventListeners;
 import net.falseme.discord.falsemusic.bot.youtube.YoutubeRequest;
 import net.falseme.discord.falsemusic.bot.youtube.YoutubeResponse;
 

@@ -30,6 +30,12 @@ public class Env {
 				throw new Exception("COULDN'T LOAD ENV VAR: " + s);
 		}
 
+		/*//
+		for (String s : keylist) {
+			System.out.println(System.getenv(s));
+		}
+		//*/
+
 		return true;
 
 	}

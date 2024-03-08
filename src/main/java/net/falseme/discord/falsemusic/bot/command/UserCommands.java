@@ -7,7 +7,6 @@ import java.util.List;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
-import net.falseme.discord.falsemusic.bot.event.EventListeners;
 
 /**
  * Load and Manage User utilities commands

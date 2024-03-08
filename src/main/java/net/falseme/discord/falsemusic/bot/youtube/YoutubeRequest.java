@@ -52,7 +52,7 @@ public class YoutubeRequest {
 		search.setKey(Env.get("YOUTUBE_API_KEY"));
 		search.setQ(query);
 		search.setType("video");
-		// To increase efficiency, only retrieve the fields that the application uses.
+		// To increase efficiency, only retrieve id, title, channel-name & image url
 		search.setFields("items(id/kind,id/videoId,snippet/title,snippet/channelTitle,snippet/thumbnails/default/url)");
 		search.setMaxResults(MAX_VID_SEARCH);
 
