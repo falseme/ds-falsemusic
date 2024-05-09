@@ -13,24 +13,26 @@ public class Env {
 	private static Map<String, String> keys = new HashMap<>();
 
 	/**
-	 * Load api keys
+	 * Load api keys using main method args
 	 * 
-	 * @return True if could load
 	 * @throws Exception if couldn't load
 	 */
-	public static boolean load() throws Exception {
+	public static void load(String... vars) throws Exception {
 
-		System.out.println("LOADING ENV VARIABLES...");
+		System.out.println("LOADING ENV VARIABLES USING ARGS...\n");
+
+		for (String s : vars) {
+			String[] key_var = s.split("=");
+			keys.put(key_var[0], key_var[1]);
+			System.out.println(key_var[0] + " : " + key_var[1]);
+		}
 
 		String[] keylist = new String[] { "DISCORD_TOKEN", "YOUTUBE_API_KEY", "YT_OAUTH_CLIENT", "YT_OAUTH_SECRET" };
 
 		for (String s : keylist) {
-			keys.put(s, System.getenv(s));
 			if (keys.get(s) == null || keys.get(s).isEmpty())
 				throw new Exception("COULDN'T LOAD ENV VAR: " + s);
 		}
-
-		return true;
 
 	}
 
